@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Images/Logo.png" />
+    <title>Agenda De Contatos</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body style="margin-top: 5px; background-color:whitesmoke">
+    <div>
+        <form id="frmMain">
+            <nav class="nav navbar-default" style="border-radius: 10px 10px 10px 0px; margin-top:0px; position:absolute">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" style="margin-left:-30px">
+                            <li><a href="@Url.Action("Buscar", "Pessoa", new { Inicial = " "}, null)"><img src="~/Images/Logo.png" style="width:30px; height:25px; margin-top:-5px" /></a></li>
+                            <li>@Html.ActionLink("HOME", "Buscar", "Pessoa", new { Inicial = " " }, null)</li>
+                            <li><a href="@Url.Action("Buscar", "Pessoa", new { Inicial = "Favorito" }, null)"><img src="~/Images/Favorito.png" style="width:20px; height:20px" /></a></li>
+                            <li>@Html.ActionLink("A", "Buscar", "Pessoa", new { Inicial = "A" }, null)</li>
+                            <li>@Html.ActionLink("B", "Buscar", "Pessoa", new { Inicial = "B" }, null)</li>
+                            <li>@Html.ActionLink("C", "Buscar", "Pessoa", new { Inicial = "C" }, null)</li>
+                            <li>@Html.ActionLink("D", "Buscar", "Pessoa", new { Inicial = "D" }, null)</li>
+                            <li>@Html.ActionLink("E", "Buscar", "Pessoa", new { Inicial = "E" }, null)</li>
+                            <li>@Html.ActionLink("F", "Buscar", "Pessoa", new { Inicial = "F" }, null)</li>
+                            <li>@Html.ActionLink("G", "Buscar", "Pessoa", new { Inicial = "G" }, null)</li>
+                            <li>@Html.ActionLink("H", "Buscar", "Pessoa", new { Inicial = "H" }, null)</li>
+                            <li>@Html.ActionLink("I", "Buscar", "Pessoa", new { Inicial = "I" }, null)</li>
+                            <li>@Html.ActionLink("J", "Buscar", "Pessoa", new { Inicial = "J" }, null)</li>
+                            <li>@Html.ActionLink("K", "Buscar", "Pessoa", new { Inicial = "K" }, null)</li>
+                            <li>@Html.ActionLink("L", "Buscar", "Pessoa", new { Inicial = "L" }, null)</li>
+                            <li>@Html.ActionLink("M", "Buscar", "Pessoa", new { Inicial = "M" }, null)</li>
+                            <li>@Html.ActionLink("N", "Buscar", "Pessoa", new { Inicial = "N" }, null)</li>
+                            <li>@Html.ActionLink("O", "Buscar", "Pessoa", new { Inicial = "O" }, null)</li>
+                            <li>@Html.ActionLink("P", "Buscar", "Pessoa", new { Inicial = "P" }, null)</li>
+                            <li>@Html.ActionLink("Q", "Buscar", "Pessoa", new { Inicial = "Q" }, null)</li>
+                            <li>@Html.ActionLink("R", "Buscar", "Pessoa", new { Inicial = "R" }, null)</li>
+                            <li>@Html.ActionLink("S", "Buscar", "Pessoa", new { Inicial = "S" }, null)</li>
+                            <li>@Html.ActionLink("T", "Buscar", "Pessoa", new { Inicial = "T" }, null)</li>
+                            <li>@Html.ActionLink("U", "Buscar", "Pessoa", new { Inicial = "U" }, null)</li>
+                            <li>@Html.ActionLink("V", "Buscar", "Pessoa", new { Inicial = "V" }, null)</li>
+                            <li>@Html.ActionLink("W", "Buscar", "Pessoa", new { Inicial = "W" }, null)</li>
+                            <li>@Html.ActionLink("X", "Buscar", "Pessoa", new { Inicial = "X" }, null)</li>
+                            <li>@Html.ActionLink("Y", "Buscar", "Pessoa", new { Inicial = "Y" }, null)</li>
+                            <li>@Html.ActionLink("Z", "Buscar", "Pessoa", new { Inicial = "Z" }, null)</li>
+                        </ul>
+
+                        <ul class="nav navbar-right " style="margin-top:4px; font-family:sans-serif; font-size:100px; position:inherit">
+                            <li>
+                                @Html.ActionLink("+", "Create", "Pessoa", null, new { @class = "btn btn-primary" })
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </form>
+    </div>
+    <div>
+        <form id="frmMain2">
+            <nav class="nav navbar-default" style="width:400px; height:50px ; margin-left:10px; margin-top:50px; border-radius:0px 0px 10px 10px; position:absolute">
+                <div class="container-fluid">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" style="height:2px; font-size:10px; margin-left:-20px">
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li>
+                                    @Html.ActionLink("Logout", "Logout", "Usuario")
+                                </li>
+                                <li>
+                                    @Html.ActionLink("Mensagem", "MensagensContato", "Pessoa", new { id = HttpContext.Current.User.Identity.Name }, null)
+                                </li>
+                                <li style="font-size:20px;color:whitesmoke; margin-top:10px">
+                                    @Html.Label("Olá, " + HttpContext.Current.User.Identity.Name)
+                                </li>
+
+                            }
+                            else
+                            {
+                                <li>
+                                    @Html.ActionLink("Login", "Login", "Usuario")
+                                </li>
+                                <li>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;
+                                </li>
+                                <li style="font-size:20px;color:whitesmoke; margin-top:10px">
+                                    @Html.Label("Olá, Visitante")
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </form>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+</body>
+</html>

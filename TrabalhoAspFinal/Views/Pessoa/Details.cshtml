@@ -1,0 +1,75 @@
+﻿@model TrabalhoAspFinal.Models.Pessoa
+
+<div class="form-horizontal" style="margin-top:80px">
+    <div class="input-lg">
+    </div>
+    <div class="form-control form-group" style="width: 650px; height: 430px; background-color: whitesmoke; margin-left: -2px; border-radius: 10px">
+        <div style="margin-top: 5px">
+            <h6>Contato</h6>
+                @if (!Model.Favorita)
+                {
+                    <a href="@Url.Action("AdicionarFavorito", "Pessoa", new { id = Model.PessoaId}, null)">
+                        <img src="~/Images/Favorito.png" style="width:20px; height:20px; margin-left:580px; -webkit-filter:grayscale(1); filter:grayscale(1)" />
+                    </a>
+                }
+                else if(Model.Favorita)
+                {
+                    <a href="@Url.Action("AdicionarFavorito", "Pessoa", new { id = Model.PessoaId}, null)">
+                        <img src="~/Images/Favorito.png" style="width:20px; height:20px; margin-left:580px" />
+                    </a>
+                }
+            &nbsp;
+        </div>
+        <div>
+            <img src="~/Images/@Html.DisplayFor(model => model.Imagem)" style="width:150px; height:200px" />
+            <table class="table table-striped table-hover" style="width:400px; border-style:none; margin-left:200px; margin-top:-190px">
+                <tbody>
+                    <tr class="info">
+                        <th style="text-align:right; width:100px">
+                            <b>@Html.DisplayNameFor(model => model.Nome)</b>
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Nome)
+                        </th>
+                    </tr>
+                    <tr class="success">
+                        <th style="text-align:right">
+                            <b>@Html.DisplayNameFor(model => model.Idade)</b>
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Idade)
+                        </th>
+                    </tr>
+                    <tr class="info">
+                        <th style="text-align:right">
+                            <b>@Html.DisplayNameFor(model => model.Telefone)</b>
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Telefone)
+                        </th>
+                    <tr>
+                    <tr class="success">
+                        <th style="text-align:right">
+                            <b>@Html.DisplayNameFor(model => model.Endereco)</b>
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Endereco)
+                        </th>
+                    <tr>
+                    <tr class="info">
+                        <th style="text-align:right">
+                            <b>@Html.DisplayNameFor(model => model.Email)</b>
+                        </th>
+                        <th>
+                            @Html.DisplayFor(model => model.Email)
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-left:344px; margin-top:120px">
+                 @Html.ActionLink("Enviar Mensagem", "Create", "Mensagem", new { id = Model.PessoaId }, new { @class = "btn btn-success" })
+                 @Html.ActionLink("Editar", "Edit", new { id = Model.PessoaId }, new { @class = "btn btn-success" })
+                 @Html.ActionLink("Excluir", "Delete", new { id = Model.PessoaId }, new { @class = "btn btn-success" })</div>
+    </div>
+</div>

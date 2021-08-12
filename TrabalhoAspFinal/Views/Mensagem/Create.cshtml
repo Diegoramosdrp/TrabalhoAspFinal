@@ -1,0 +1,104 @@
+﻿@model TrabalhoAspFinal.Models.MensagemContato
+
+@{
+    TrabalhoAspFinal.Models.Pessoa pessoa = ViewBag.Pessoa;
+    List<TrabalhoAspFinal.Models.MensagemContato> Mensagens = ViewBag.Mensagem;
+}
+
+<div class="form-horizontal">
+    <div class="input-lg" style="margin-top:80px">
+    </div>
+    <div class="form-control form-group" style="width: 650px; height: 430px; background-color: whitesmoke; margin-left: 6px; border-radius: 10px">
+        <div style="margin-top: 5px">
+            <h6>Contato</h6>&nbsp;
+        </div>
+        <div>
+            <img src="~/Images/@pessoa.Imagem" style="width:150px; height:200px" />
+            <table class="table table-striped table-hover" style="width:400px; border-style:none; margin-left:200px; margin-top:-190px">
+                <tbody>
+                    <tr class="info">
+                        <th style="text-align:right; width:100px">
+                            <b>Nome :</b>
+                        </th>
+                        <th>
+                            @pessoa.Nome
+                        </th>
+                    </tr>
+                    <tr class="success">
+                        <th style="text-align:right">
+                            <b>Idade :</b>
+                        </th>
+                        <th>
+                            @pessoa.Idade
+                        </th>
+                    </tr>
+                    <tr class="info">
+                        <th style="text-align:right">
+                            <b>Telefone :</b>
+                        </th>
+                        <th>
+                            @pessoa.Telefone
+                        </th>
+                    <tr>
+                    <tr class="success">
+                        <th style="text-align:right">
+                            <b>Endereço :</b>
+                        </th>
+                        <th>
+                            @pessoa.Endereco
+                        </th>
+                    <tr>
+                    <tr class="info">
+                        <th style="text-align:right">
+                            <b>Email :</b>
+                        </th>
+                        <th>
+                            @pessoa.Email
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="margin-left:485px; margin-top:120px">
+            @Html.ActionLink("Editar", "Edit", "Pessoa", new { id = pessoa.PessoaId }, new { @class = "btn btn-success" })
+            @Html.ActionLink("Excluir", "Delete", "Pessoa", new { id = pessoa.PessoaId }, new { @class = "btn btn-success" })
+        </div>
+        <div class="form-control form-group" style="width: 500px; height: 595px; background-color:aliceblue ; margin-left: 650px; margin-top:-413px ;border-radius: 10px; z-index:1; position:absolute; overflow:auto">
+            <table class="table table-striped table-hover">
+                @foreach (var item in Mensagens)
+                {
+                    <tr>
+                        <td style="width:20%; word-break:break-all">
+                            @item.Mensagem
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        <div class="form-control form-group" style="width: 650px; height: 150px; background-color: whitesmoke; margin-left: 6px; border-radius: 10px">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mensagem, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Mensagem, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+            <div style="margin-left:110px; position:absolute">@Html.ValidationMessageFor(model => model.Mensagem, null, new { @style = "color:red" })</div>
+            <div class="form-group">
+                <div class="col-md-offset-10">
+                    <input type="submit" value="Enviar" class="btn btn-success" style="width:87px; margin-top:5px; margin-left:11px ;position:static" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

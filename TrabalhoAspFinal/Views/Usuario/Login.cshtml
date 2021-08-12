@@ -1,0 +1,52 @@
+﻿@model TrabalhoAspFinal.Models.Usuario
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="margin-left:355px">
+        <div class="input-lg" style="margin-top:80px">
+        </div>
+        <div class="form-control form-group" style="width: 400px; height: 280px; background-color: lightblue; margin-left: -2px;margin-top:50px; border-radius: 10px">
+            <div style="margin-top: 5px">
+                <h6>Login</h6>&nbsp;
+            </div>
+            <div class="form-group" style="margin-top:10px; width:500px; position:static">
+                @Html.LabelFor(model => model.Login, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-4" style="margin-top:-25px; margin-left:260px; text-emphasis-color:red; font-size:10px">
+                        @Html.ValidationMessageFor(model => model.Login, null, new { @style = "color:red" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group" style="margin-top:-10px; width:500px">
+                @Html.LabelFor(model => model.Senha, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-4" style="margin-top:-25px; margin-left:260px; text-emphasis-color:red; font-size:10px">
+                        @Html.ValidationMessageFor(model => model.Senha, null, new { @style = "color:red" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" style="margin-top:-15px">
+                <div style="margin-left:110px">
+                    @Html.CheckBox("PermanecerConectado")
+                    @Html.Label("Permanecer conectado")
+                </div>
+                <div class="col-md-offset-10">
+                    <input type="submit" value="Enviar" class="btn btn-success" style="width:87px; margin-top:-30px; margin-left:-47px" />
+                </div>
+                <div class="navbar-link" style="margin-left:130px; margin-top:-25px">
+                    @Html.ActionLink("Não Possui Login?","Create")
+                </div>
+                <div style="margin-left:100px; margin-top:30px">
+                    @Html.ValidationSummary(true)
+                </div>
+            </div>
+        </div>
+    </div>
+}

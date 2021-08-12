@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "MensagensContato";
+    List<TrabalhoAspFinal.Models.MensagemContato> Mensagens = ViewBag.Mensagens;
+}
+
+<div class="form-control form-group" style="width: 500px; height: 500px; background-color:aliceblue ; margin-left: 10px; margin-top:110px ;border-radius: 10px; z-index:1; position:absolute; overflow:auto">
+    <div class="form-control" style="background-color:AppWorkspace; text-align:center; font-weight:bold">
+        Mensagens Recebidas Dos Administradores
+    </div>
+    &nbsp;
+    <table class="table table-striped table-hover">
+        @foreach (var item in Mensagens)
+        {
+            <tr>
+                <td style="width:20%; word-break:break-all">
+                    @item.Mensagem
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+

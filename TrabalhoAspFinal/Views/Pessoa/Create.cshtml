@@ -1,0 +1,86 @@
+﻿@model TrabalhoAspFinal.Models.Pessoa
+
+@using (Html.BeginForm("Create", "Pessoa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="input-lg" style="margin-top:80px">
+        </div>
+        @Html.ValidationSummary(true)
+        <div class="form-control form-group" style="width: 596px; height: 430px; background-color: whitesmoke; margin-left: -2px; border-radius: 10px">
+            <div style="margin-top: 5px">
+                <h6>Cadastrar Novo Contato</h6>&nbsp;
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red; font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Nome, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Idade, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Idade, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red; font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Idade, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefone, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red; font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Telefone, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Endereco, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red; font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Endereco, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red;font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Email, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Imagem, new { @class = "control-label col-lg-2" })
+                <div class="col-md-10" style="width:300px">
+                    @*@Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="file" name="file" style="margin-top:7px" />
+                </div>
+                <div class="col-md-4" style="margin-top:10px; text-emphasis-color:red;font-size:10px">
+                    @Html.ValidationMessageFor(model => model.Imagem, null, new { @style = "color:red" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-10">
+                    <input type="submit" value="Enviar" class="btn btn-success" style="width:87px; margin-top:5px" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

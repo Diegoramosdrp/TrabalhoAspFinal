@@ -1,0 +1,21 @@
+﻿@model IEnumerable<TrabalhoAspFinal.Models.Pessoa>
+
+<div style="margin-top:150px">
+    @foreach (var item in Model)
+    {
+
+        <table class=" form-control-static">
+            <tr class="form-control form-group" style="width: 500px; height: 75px; background-color: whitesmoke; margin-left: 10px; border-radius: 10px">
+                <td style="width:70px">
+                    <img src="~/Images/Logo.png" style="width:60px; height:60px; background-color: aqua; border-radius:10px; margin-left:-4px; margin-top:-1px" />
+                </td>
+                <td style="font-family:Rage; font-size:xx-large; width:330px">
+                    @Html.ActionLink(item.Nome, "Details", new { id = item.PessoaId })
+                </td>
+                <td style="vertical-align:bottom; font-family: Segoe UI; font-weight:bold; font-size:medium;">
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+            </tr>
+        </table>
+    }
+</div>

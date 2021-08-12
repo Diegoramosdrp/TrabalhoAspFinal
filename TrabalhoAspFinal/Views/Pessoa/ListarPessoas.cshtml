@@ -1,0 +1,9 @@
+﻿@using ReportViewerForMvc
+@{
+    ViewBag.Title = "ListarPessoas";
+}
+
+<div style="margin-top: 150px; margin-left:150px; position:relative">
+    @Html.ReportViewer((Microsoft.Reporting.WebForms.ReportViewer)ViewBag.Relatorio)
+</div>
+

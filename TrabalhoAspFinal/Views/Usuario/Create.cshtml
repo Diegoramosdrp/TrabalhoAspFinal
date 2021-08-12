@@ -1,0 +1,96 @@
+﻿@model TrabalhoAspFinal.Models.Usuario
+@using ReportViewerForMvc
+
+<script src="~/Scripts/jquery-2.2.3.js"></script>
+<script type="text/javascript">
+    function ShowHideDiv() {
+        var Permissao = document.getElementById("Permissao");
+        var Email = document.getElementById("Email");
+        Email.style.display = Permissao.value == 2 ? "block" : "none";
+    }
+</script>
+<script language="javascript">
+    function openPopupWindow() {
+        window.open('/Pessoa/ListarPessoas/', 'Page', "width=3000, height=2000");
+        return false;
+    }
+</script>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal" style="margin-left:200px">
+        <div class="input-lg" style="margin-top:80px">
+        </div>
+        <div class="form-control form-group" style="width: 600px; height: 335px; background-color: lightblue; margin-left: -2px;margin-top:50px; border-radius: 10px">
+            <div style="margin-top: 5px">
+                <h6>Criar Login</h6>&nbsp;
+            </div>
+            <div class="form-group" style="margin-top:10px; width:1150px; position:static">
+                @Html.LabelFor(model => model.Login, new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.EditorFor(model => model.Login, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-4" style="margin-top:-25px; margin-left:260px; text-emphasis-color:red; font-size:10px">
+                        @Html.ValidationMessageFor(model => model.Login, null, new { @style = "color:red" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:-10px; width:1150px">
+                @Html.LabelFor(model => model.Senha, new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-4" style="margin-top:-25px; margin-left:260px; text-emphasis-color:red; font-size:10px">
+                        @Html.ValidationMessageFor(model => model.Senha, null, new { @style = "color:red" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:-10px; width:1150px">
+                @Html.LabelFor(model => model.ConfirmacaoSenha, new { @class = "control-label col-md-2" })
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.EditorFor(model => model.ConfirmacaoSenha, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-4" style="margin-top:-25px; margin-left:260px; text-emphasis-color:red; font-size:10px">
+                        @Html.ValidationMessageFor(model => model.ConfirmacaoSenha, null, new { @style = "color:red" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top:-10px; width:1150px">
+                <div class="control-label col-md-2">
+                    <b>Tipo De Permissão : </b>
+                </div>
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.DropDownList("PermissaoId", (SelectList)ViewBag.PermissaoId, null, new { @id = "Permissao", @onchange = "ShowHideDiv()", @class = ("form-control") })
+                </div>
+            </div>
+            <div class="form-group" style="margin-top:-10px; width:1150px; display:none" id="Email">
+               <div>
+                 <div class="control-label col-md-2">
+                    <b>Email Do Contato : </b>
+                </div>
+                <div class="col-md-10" style="width:300px; margin-left:10px">
+                    @Html.DropDownList("PessoaId", (SelectList)ViewBag.PessoaId, null, new { @class = ("form-control") })
+                </div>
+                   </div>
+                <div style="text-align-last:inherit">
+                    <a class="btn btn-info" data-toggle="modal" data-target=".bootstrapmodal" style="font-size:xx-small; height:30px;  width:90px; margin-top:6px">Lista De Contatos</a>
+                </div>
+            </div>
+            <div style="margin-left:100px; margin-top:30px">
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+        <div class="form-control form-group" style="width: 600px; height: 45px; background-color: lightblue; margin-left: -2px;margin-top:-30px; border-radius: 10px; border-top-style:none">
+            <input type="submit" value="Enviar" class="btn btn-success" style="width:87px; margin-left:490px; margin-top:-10px" />
+        </div>        
+    </div>
+    <div class="modal fade bootstrapmodal">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width:920px; margin-left:-130px">
+                <div class="modal-body" style="background-color:whitesmoke">
+                    @Html.ReportViewer((Microsoft.Reporting.WebForms.ReportViewer)ViewBag.Relatorio)
+                </div>
+            </div>
+        </div>
+    </div>
+}
